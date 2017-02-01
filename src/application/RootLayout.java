@@ -15,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import jfxtras.labs.util.event.MouseControlUtil;
+
 
 public class RootLayout extends AnchorPane{
 
@@ -27,7 +29,7 @@ public class RootLayout extends AnchorPane{
 	private EventHandler<DragEvent> mIconDragOverRoot = null;
 	private EventHandler<DragEvent> mIconDragDropped = null;
 	private EventHandler<DragEvent> mIconDragOverRightPane = null;
-	
+
 	public RootLayout() {
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(
@@ -98,7 +100,7 @@ public class RootLayout extends AnchorPane{
 				content.put(DragContainer.AddNode, container);
 
 				mDragOverIcon.startDragAndDrop (TransferMode.ANY).setContent(content);
-				mDragOverIcon.setVisible(true);
+				mDragOverIcon.setVisible(false);
 				mDragOverIcon.setMouseTransparent(true);
 				event.consume();					
 			}
@@ -184,6 +186,7 @@ public class RootLayout extends AnchorPane{
 					if (container.getValue("scene_coords") != null) {
 					
 						DragIcon droppedIcon = new DragIcon();
+						MouseControlUtil.makeDraggable(droppedIcon);
 						
 						droppedIcon.setType(DragIconType.valueOf(container.getValue("type")));
 						right_pane.getChildren().add(droppedIcon);
