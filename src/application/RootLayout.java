@@ -31,7 +31,7 @@ public class RootLayout extends AnchorPane{
 	public RootLayout() {
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(
-				getClass().getResource("/RootLayout.fxml")
+				getClass().getResource("../resources/RootLayout.fxml")
 				);
 		
 		fxmlLoader.setRoot(this); 
