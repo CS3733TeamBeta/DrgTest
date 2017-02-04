@@ -50,7 +50,7 @@ public class DragIcon extends AnchorPane{
 
 				Point2D p = new Point2D(
 						this.getScene().getX() + (getWidth() / 2.0),
-						this.getScene().getY() + (getHeight() / 2.0)
+						this.getScene().getX() + (getHeight() / 2.0)
 				);
 
 				edgeLine.setStart(p);
