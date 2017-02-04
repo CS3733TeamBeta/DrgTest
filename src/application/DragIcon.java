@@ -11,6 +11,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
+import java.awt.MouseInfo;
+import java.awt.Point;
 
 /**
  *
@@ -50,13 +52,17 @@ public class DragIcon extends AnchorPane{
 
 				Bounds boundsInScene = this.getBoundsInLocal();
 
-				Point2D startPoint = new Point2D(boundsInScene.getMinX() + (boundsInScene.getWidth() / 2), boundsInScene.getMinY() + (boundsInScene.getHeight() / 2));
+				Point2D startPoint = new Point2D(
+						boundsInScene.getMinX() + (boundsInScene.getWidth() / 2),
+						boundsInScene.getMinY() + (boundsInScene.getHeight() / 2)
+				);
 
 				edgeLine.setStart(startPoint);
 
 				this.getParent().setOnMouseMoved(ev->{
-					Point2D localCoords = sceneToLocal(new Point2D(ev.getX()+108, ev.getY()));
-					edgeLine.setEnd(localCoords);
+					Point p = MouseInfo.getPointerInfo().getLocation(); // get the absolute current loc of the mouse on screen
+					Point2D mouseCoords = this.screenToLocal(p.x, p.y); // convert coordinates to relative within the window
+					edgeLine.setEnd(mouseCoords);
 				});
 			}
 		});
