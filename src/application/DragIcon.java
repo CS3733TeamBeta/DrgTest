@@ -44,7 +44,7 @@ public class DragIcon extends AnchorPane{
 
 		this.getChildren().add(edgeLine);
 
-		this.setOnMouseClicked(event->{
+		/*this.setOnMouseClicked(event->{
 
 			if(event.getButton() == MouseButton.SECONDARY)
 			{
@@ -65,7 +65,7 @@ public class DragIcon extends AnchorPane{
 					edgeLine.setEnd(mouseCoords);
 				});
 			}
-		});
+		});*/
 
 		edgeLine.setVisible(false);
 	}

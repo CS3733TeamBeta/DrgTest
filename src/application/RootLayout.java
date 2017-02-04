@@ -1,18 +1,16 @@
 package application;
 
+import java.awt.*;
 import java.io.IOException;
 
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.control.SplitPane;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DataFormat;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import jfxtras.labs.util.event.MouseControlUtil;
@@ -29,6 +27,8 @@ public class RootLayout extends AnchorPane{
 	private EventHandler<DragEvent> mIconDragOverRoot = null;
 	private EventHandler<DragEvent> mIconDragDropped = null;
 	private EventHandler<DragEvent> mIconDragOverRightPane = null;
+
+	NodeLink link;
 
 	public RootLayout() {
 		
@@ -48,7 +48,9 @@ public class RootLayout extends AnchorPane{
 	}
 	
 	@FXML
-	private void initialize() {
+	private void initialize()
+	{
+		link = new NodeLink();
 		
 		//Add one icon that will be used for the drag-drop process
 		//This is added as a child to the root anchorpane so it can be visible
@@ -70,7 +72,9 @@ public class RootLayout extends AnchorPane{
 			icn.setType(DragIconType.values()[i%6]);
 			left_pane.getChildren().add(icn);
 		}
-		
+
+		right_pane.getChildren().add(link);
+
 		buildDragHandlers();
 	}
 	
@@ -196,6 +200,29 @@ public class RootLayout extends AnchorPane{
 						droppedIcon.relocateToPoint(
 								new Point2D(cursorPoint.getX() - 32, cursorPoint.getY() - 32)
 								);
+
+
+						droppedIcon.setOnMouseClicked(ev ->
+						{
+							if(ev.getButton() == MouseButton.SECONDARY)
+							{
+								Bounds boundsInScene = droppedIcon.getBoundsInLocal();
+
+								Point2D startPoint = new Point2D(
+										boundsInScene.getMinX() + (boundsInScene.getWidth() / 2),
+										boundsInScene.getMinY() + (boundsInScene.getHeight() / 2)
+								);
+
+								link.setStart(droppedIcon.localToParent(startPoint));
+								link.setEnd(droppedIcon.localToParent(startPoint));
+
+								link.getParent().setOnMouseMoved(mouseEvent->{
+									Point p = MouseInfo.getPointerInfo().getLocation(); // get the absolute current loc of the mouse on screen
+									Point2D mouseCoords = link.screenToLocal(p.x, p.y); // convert coordinates to relative within the window
+									link.setEnd(mouseCoords);
+								});
+							}
+						});
 					}
 				}
 
