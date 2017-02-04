@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.CubicCurve;
+import javafx.scene.shape.Line;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -21,7 +21,7 @@ public class NodeLink extends AnchorPane
 {
 
     @FXML
-    CubicCurve node_link;
+    Line node_link;
 
     private final DoubleProperty mControlOffsetX = new SimpleDoubleProperty();
     private final DoubleProperty mControlOffsetY = new SimpleDoubleProperty();
@@ -64,30 +64,6 @@ public class NodeLink extends AnchorPane
                 node_link.startXProperty().greaterThan(node_link.endXProperty()))
                 .then(1.0).otherwise(-1.0));
 
-
-        node_link.controlX1Property().bind(
-                Bindings.add(
-                        node_link.startXProperty(), mControlOffsetX.multiply(mControlDirectionX1)
-                )
-        );
-
-        node_link.controlX2Property().bind(
-                Bindings.add(
-                        node_link.endXProperty(), mControlOffsetX.multiply(mControlDirectionX2)
-                )
-        );
-
-        node_link.controlY1Property().bind(
-                Bindings.add(
-                        node_link.startYProperty(), mControlOffsetY.multiply(mControlDirectionY1)
-                )
-        );
-
-        node_link.controlY2Property().bind(
-                Bindings.add(
-                        node_link.endYProperty(), mControlOffsetY.multiply(mControlDirectionY2)
-                )
-        );
     }
 
 
