@@ -6,15 +6,21 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
 
+/**
+ *
+ */
 public class DragIcon extends AnchorPane{
 	
 	@FXML AnchorPane root_pane;
 
 	private DragIconType mType = null;
-	
+	private NodeLink edgeLine;
+
 	public DragIcon() {
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(
@@ -30,6 +36,27 @@ public class DragIcon extends AnchorPane{
 		} catch (IOException exception) {
 		    throw new RuntimeException(exception);
 		}
+
+		edgeLine = new NodeLink();
+
+		this.getChildren().add(edgeLine);
+
+		this.setOnMouseClicked(event->{
+			if(event.getButton() == MouseButton.SECONDARY)
+			{
+				Point2D p = new Point2D(
+						this.getScene().getX() + (getWidth() / 2.0),
+						this.getScene().getX() + (getHeight() / 2.0)
+				);
+
+				edgeLine.setStart(p);
+
+				this.getParent().setOnMouseMoved(ev->{
+					Point2D localCoords = getParent().sceneToLocal(new Point2D(ev.getX(), ev.getY() ));
+					edgeLine.setEnd(new Point2D(ev.getX()-20, ev.getY()-20));
+				});
+			}
+		});
 	}
 	
 	@FXML
