@@ -97,37 +97,33 @@ public class DragIcon extends AnchorPane{
 		getStyleClass().add("dragicon");
 		
 		switch (mType) {
+
+			case bathroom:
+				getStyleClass().add("bathroom");
+				break;
+
+			case doctor:
+				getStyleClass().add("doctor");
+				break;
+
+			case elevator:
+				getStyleClass().add("elevator");
+				break;
+
+			case help:
+				getStyleClass().add("food");
+				break;
+
+			case food:
+				getStyleClass().add("help");
+				break;
+
+			case info:
+				getStyleClass().add("info");
+				break;
 		
-		case blue:
-			getStyleClass().add("icon-blue");
-		break;
-
-		case red:
-			getStyleClass().add("icon-red");			
-		break;
-
-		case green:
-			getStyleClass().add("icon-green");
-		break;
-
-		case grey:
-			getStyleClass().add("icon-grey");
-		break;
-
-		case purple:
-			getStyleClass().add("icon-purple");
-		break;
-
-		case yellow:
-			getStyleClass().add("icon-yellow");
-		break;
-
-		case black:
-			getStyleClass().add("icon-black");
-		break;
-		
-		default:
-		break;
+			default:
+				break;
 		}
 	}
 }

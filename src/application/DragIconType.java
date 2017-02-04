@@ -1,11 +1,10 @@
 package application;
 
 public enum DragIconType {
-	red,
-	green,
-	blue,
-	black,
-	yellow,
-	purple,
-	grey
+	bathroom,
+	doctor,
+	elevator,
+	food,
+	info,
+	help
 }

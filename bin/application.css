@@ -3,7 +3,10 @@
 }
 
 .icon-blue {
-	-fx-background-color: blue;
+	-fx-background-image: url("../src/resources/bathroom.png");
+	-fx-background-repeat: stretch;
+	-fx-background-size: 10 10;
+	-fx-background-position: center center;
 }
 
 .icon-red {

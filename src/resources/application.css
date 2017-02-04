@@ -1,31 +1,29 @@
 .dragicon {
-	-fx-background-radius: 10; 
+	-fx-background-repeat: stretch;
+	-fx-background-size: 64 64;
+	-fx-background-position: center center;
 }
 
-.icon-blue {
-	-fx-background-color: blue;
+.bathroom {
+	-fx-background-image: url("bathroom.png");
 }
 
-.icon-red {
-	-fx-background-color: red;
+.doctor {
+	-fx-background-image: url("doctor-og.png");
 }
 
-.icon-green {
-	-fx-background-color: green;
+.elevator {
+	-fx-background-image: url("elevator.png");
 }
 
-.icon-black {
-	-fx-background-color: black;
+.food {
+	-fx-background-image: url("food.png");
 }
 
-.icon-grey {
-	-fx-background-color: grey;
+.help {
+	-fx-background-image: url("help.png");
 }
 
-.icon-yellow {
-	-fx-background-color: yellow;
-}
-
-.icon-purple {
-	-fx-background-color: purple;
+.info {
+	-fx-background-image: url("info.png");
 }
