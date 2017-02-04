@@ -52,8 +52,8 @@ public class DragIcon extends AnchorPane{
 				edgeLine.setStart(p);
 
 				this.getParent().setOnMouseMoved(ev->{
-					Point2D localCoords = getParent().sceneToLocal(new Point2D(ev.getX(), ev.getY() ));
-					edgeLine.setEnd(new Point2D(ev.getX()-20, ev.getY()-20));
+					Point2D localCoords = sceneToLocal(new Point2D(ev.getX()+108, ev.getY()));
+					edgeLine.setEnd(localCoords);
 				});
 			}
 		});
