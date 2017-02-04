@@ -201,11 +201,13 @@ public class RootLayout extends AnchorPane{
 								new Point2D(cursorPoint.getX() - 32, cursorPoint.getY() - 32)
 								);
 
-
 						droppedIcon.setOnMouseClicked(ev ->
 						{
 							if(ev.getButton() == MouseButton.SECONDARY)
 							{
+								droppedIcon.setOnMouseDragEntered(null);
+								droppedIcon.setOnMouseDragged(null);
+
 								Bounds boundsInScene = droppedIcon.getBoundsInLocal();
 
 								Point2D startPoint = new Point2D(
@@ -222,6 +224,16 @@ public class RootLayout extends AnchorPane{
 									link.setEnd(mouseCoords);
 								});
 							}
+						});
+
+						droppedIcon.setOnMouseEntered(ev->
+						{
+							droppedIcon.setOpacity(.65);
+						});
+
+						droppedIcon.setOnMouseExited(ev->
+						{
+							droppedIcon.setOpacity(1);
 						});
 					}
 				}
