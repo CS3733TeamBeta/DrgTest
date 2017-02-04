@@ -22,7 +22,9 @@ public class DragIcon extends AnchorPane{
 	private NodeLink edgeLine;
 
 	public DragIcon() {
-		
+
+
+
 		FXMLLoader fxmlLoader = new FXMLLoader(
 				getClass().getResource("../resources/DragIcon.fxml")
 				);
@@ -44,12 +46,15 @@ public class DragIcon extends AnchorPane{
 		this.setOnMouseClicked(event->{
 			if(event.getButton() == MouseButton.SECONDARY)
 			{
+				edgeLine.setVisible(true);
+
 				Point2D p = new Point2D(
 						this.getScene().getX() + (getWidth() / 2.0),
-						this.getScene().getX() + (getHeight() / 2.0)
+						this.getScene().getY() + (getHeight() / 2.0)
 				);
 
 				edgeLine.setStart(p);
+				edgeLine.setEnd(p);
 
 				this.getParent().setOnMouseMoved(ev->{
 					Point2D localCoords = sceneToLocal(new Point2D(ev.getX()+108, ev.getY()));
@@ -58,12 +63,7 @@ public class DragIcon extends AnchorPane{
 			}
 		});
 
-		Point2D p = new Point2D(
-				this.getLayoutX() + (getWidth() / 2.0),
-				this.getLayoutY() + (getHeight() / 2.0)
-		);
-
-		edgeLine.setStart(p);
+		edgeLine.setVisible(false);
 	}
 	
 	@FXML
