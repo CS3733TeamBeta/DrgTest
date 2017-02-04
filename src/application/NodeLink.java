@@ -53,16 +53,9 @@ public class NodeLink extends AnchorPane
     @FXML
     private void initialize() {
 
-        mControlOffsetX.set(100.0);
-        mControlOffsetY.set(50.0);
+        //mControlOffsetX.set(100.0);
+      //  mControlOffsetY.set(50.0);
 
-        mControlDirectionX1.bind(new When(
-                node_link.startXProperty().greaterThan(node_link.endXProperty()))
-                .then(-1.0).otherwise(1.0));
-
-        mControlDirectionX2.bind(new When (
-                node_link.startXProperty().greaterThan(node_link.endXProperty()))
-                .then(1.0).otherwise(-1.0));
 
     }
 

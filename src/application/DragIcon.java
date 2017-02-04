@@ -57,11 +57,20 @@ public class DragIcon extends AnchorPane{
 				});
 			}
 		});
+
+		Point2D p = new Point2D(
+				this.getLayoutX() + (getWidth() / 2.0),
+				this.getLayoutY() + (getHeight() / 2.0)
+		);
+
+		edgeLine.setStart(p);
 	}
 	
 	@FXML
-	private void initialize() {}
-	
+	private void initialize() {
+
+	}
+
 	public void relocateToPoint (Point2D p) {
 
 		//relocates the object to a point that has been converted to
