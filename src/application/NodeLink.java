@@ -23,12 +23,6 @@ public class NodeLink extends AnchorPane
     @FXML
     Line node_link;
 
-    private final DoubleProperty mControlOffsetX = new SimpleDoubleProperty();
-    private final DoubleProperty mControlOffsetY = new SimpleDoubleProperty();
-    private final DoubleProperty mControlDirectionX1 = new SimpleDoubleProperty();
-    private final DoubleProperty mControlDirectionY1 = new SimpleDoubleProperty();
-    private final DoubleProperty mControlDirectionX2 = new SimpleDoubleProperty();
-    private final DoubleProperty mControlDirectionY2 = new SimpleDoubleProperty();
 
     public NodeLink() {
 
@@ -52,10 +46,6 @@ public class NodeLink extends AnchorPane
 
     @FXML
     private void initialize() {
-
-        //mControlOffsetX.set(100.0);
-      //  mControlOffsetY.set(50.0);
-
 
     }
 
